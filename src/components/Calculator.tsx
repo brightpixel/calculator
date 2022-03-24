@@ -46,6 +46,7 @@ export const Calculator = () => {
     }
 
     const clearMemory=()=> setMemory(0);
+
     const clearValue = () => setValue("");
 
     return <div className="calculator">
@@ -66,6 +67,7 @@ export const Calculator = () => {
             <button className="memplus operator" onClick={addToMemory}>M+</button>
             <button className="memclear operator" onClick={calculateWithMemory}>MRC</button>
             <button className="equals operator" onClick={calculate}>=</button>
+            <button className="clearMemory" onClick={clearMemory}>CE</button>
             <button className="clear" onClick={clearValue}>C</button>
         </div>
     </div>

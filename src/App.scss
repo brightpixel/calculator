@@ -50,6 +50,21 @@ button {
   background-color: #f00;
   border-color: #f55;
   color: #fff;
+  grid-area: 5 / 4 / 6 / 4;
+
+  &:hover {
+    background-color: #1f1;
+    border-color: #3f3;
+
+  }
+}
+
+.clearMemory {
+  background-color: #f00;
+  border-color: #f55;
+  color: #fff;
+  grid-area: 4 / 4 / 4 / 4;
+
 
   &:hover {
     background-color: #1f1;
@@ -63,7 +78,6 @@ button {
   border-color: #37d;
   color: #fff;
   height: 100%;
-  grid-area: 4 / 4 / 6 / 4;
 
   &:hover {
     background-color: #3377dd;
