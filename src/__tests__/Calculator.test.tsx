@@ -5,6 +5,9 @@ const renderCalculator = () => {
     return render(<Calculator/>)
 }
 
+const divide = "÷";
+const multiply = "×"
+
 describe("<Calculator /> ", () => {
     it("renders the calculator", () => {
         renderCalculator();
@@ -48,6 +51,71 @@ describe("<Calculator /> ", () => {
 
         const actual = await screen.findByPlaceholderText("0");
 
-        expect(actual.textContent).toBe("3");
+        expect((actual as HTMLInputElement).value).toBe("3");
+    });
+
+    it("doesn't allow a divide by zero", async () => {
+        renderCalculator();
+
+        const one = screen.getByText("1");
+        const plus = screen.getByText(divide);
+        const two = screen.getByText("0");
+        const equals = screen.getByText("=");
+
+        fireEvent.click(one);
+        fireEvent.click(plus);
+        fireEvent.click(two);
+        fireEvent.click(equals);
+
+        const actual = await screen.findByPlaceholderText("0");
+
+        expect((actual as HTMLInputElement).value).toBe("Error");
+    });
+
+    it("can add to memory and then return to calculation", async () => {
+        renderCalculator();
+
+        const one = screen.getByText("1");
+        const zero = screen.getByText("0");
+        const memplus = screen.getByText("M+");
+        const memrec = screen.getByText("MRC");
+        const clear = screen.getByText("C");
+        const times = screen.getByText(multiply);
+
+        fireEvent.click(one);
+        fireEvent.click(zero);
+        fireEvent.click(memplus);
+        fireEvent.click(clear);
+
+        fireEvent.click(one);
+        fireEvent.click(zero);
+        fireEvent.click(times);
+        fireEvent.click(memrec);
+
+
+        const actual = await screen.findByPlaceholderText("0");
+
+        expect((actual as HTMLInputElement).value).toBe("100");
+    });
+
+    it("can clear the calculator", async () => {
+        renderCalculator();
+
+        const one = screen.getByText("1");
+        const two = screen.getByText("2");
+        const three = screen.getByText("3");
+        const clear = screen.getByText("C");
+
+        fireEvent.click(one);
+        fireEvent.click(two);
+        fireEvent.click(three);
+
+        const actual = await screen.findByPlaceholderText("0");
+
+        expect((actual as HTMLInputElement).value).toBe("123");
+
+        fireEvent.click(clear);
+
+        expect((actual as HTMLInputElement).value).toBe("");
     });
 })

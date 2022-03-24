@@ -63,7 +63,32 @@ button {
   border-color: #37d;
   color: #fff;
   height: 100%;
-  grid-area: 2 / 4 / 6 / 4;
+  grid-area: 4 / 4 / 6 / 4;
+
+  &:hover {
+    background-color: #3377dd;
+  }
+}
+
+.memplus {
+  background-color: #2794d4;
+  border-color: #37d;
+  color: #fff;
+  height: 100%;
+  grid-area: 2 / 4 / 2 / 4;
+
+  &:hover {
+    background-color: #3377dd;
+  }
+}
+
+.memclear {
+  font-size: 1.5rem;
+  background-color: #2794d4;
+  border-color: #37d;
+  color: #fff;
+  height: 100%;
+  grid-area: 3 / 4 / 3 / 4;
 
   &:hover {
     background-color: #3377dd;
