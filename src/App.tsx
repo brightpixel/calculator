@@ -1,13 +1,13 @@
 import React from 'react';
 import logo from './logo.png';
-import './App.css';
+import './App.scss';
+import {Calculator} from "./components/Calculator";
 
 function App() {
   return (
     <div className="App">
-      <header className="App-header">
         <img src={logo} alt="Equal Experts" />
-      </header>
+        <Calculator/>
     </div>
   );
 }
